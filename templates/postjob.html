@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Post Job - CareerConnect</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f4f6fb;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#4f6df5;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-sizing:border-box;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.post-btn{
+background:#ff7a18;
+padding:10px 20px;
+border-radius:6px;
+color:white;
+text-decoration:none;
+font-weight:500;
+white-space:nowrap;
+}
+
+.container{
+max-width:900px;
+margin:120px auto;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+margin-bottom:30px;
+}
+
+/* FORM */
+
+.form-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+font-weight:600;
+margin-bottom:6px;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+textarea{
+height:120px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+background:#e9ecff;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+}
+
+.submit-btn{
+margin-top:20px;
+background:#4f6df5;
+color:white;
+border:none;
+padding:12px 20px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.submit-btn:hover{
+background:#3e58d6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">CareerConnect</div>
+
+<a href="/recruiter_dashbaord" class="post-btn">Dashboard</a>
+</div>
+
+{{Success}}
+
+<div class="container">
+<h1 style="color: green; text-align: center;">{{success}}</h1>
+<h2>Post a New Job</h2>
+
+<form action="/postjob-submit" method="POST">
+
+<div class="form-group">
+<label>Job Title</label>
+<input type="text" placeholder="Frontend Developer" name="job_title" required>
+</div>
+
+<div class="grid">
+
+<div class="form-group">
+<label>Company Name</label>
+<input type="text" placeholder="Google" name="company_name" required>
+</div>
+
+<div class="form-group">
+<label>Location</label>
+<input type="text" placeholder="Delhi / Remote" name="location" required>
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="form-group">
+<label>Job Type</label>
+<select name="job_type" required>
+<option>Full Time</option>
+<option>Part Time</option>
+<option>Internship</option>
+<option>Contract</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Experience Required</label>
+<select name="experience" required>
+<option>Fresher</option>
+<option>1-2 Years</option>
+<option>3-5 Years</option>
+<option>5+ Years</option>
+</select>
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="form-group">
+<label>Salary Range</label>
+<input type="text" placeholder="5 LPA - 12 LPA" name="salary_range" required>
+</div>
+
+<div class="form-group">
+<label>Application Deadline</label>
+<input type="date" name="deadline" required>
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Required Skills</label>
+
+<div class="skills">
+<input type="text" placeholder="HTML, CSS, JAVA" name="skills" required> 
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Job Description</label>
+<textarea placeholder="Write job responsibilities, requirements, etc..." name="job_description"  required></textarea>
+</div>
+
+<div class="form-group">
+<label>Company Website</label>
+<input type="text" placeholder="https://company.com" name="website" required>
+</div>
+
+
+<button class="submit-btn">Publish Job</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

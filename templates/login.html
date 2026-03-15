@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login | CareerConnect</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0f2027;
+}
+
+/* Animated Background Inside Container */
+.auth-wrapper{
+position:relative;
+width:420px;
+padding:2px;
+border-radius:15px;
+background:linear-gradient(-45deg,#1e3c72,#2a5298,#00c6ff,#0072ff);
+background-size:400% 400%;
+animation:gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.auth-card{
+background:white;
+padding:35px;
+border-radius:15px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#1e3c72;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:6px;
+font-size:14px;
+}
+
+.input-group input{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+outline:none;
+}
+
+.input-group input:focus{
+border-color:#2a5298;
+}
+
+.password-box{
+position:relative;
+}
+
+.password-box input{
+padding-right:35px;
+}
+
+.eye{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+}
+
+.role-group{
+display:flex;
+justify-content:space-between;
+margin:15px 0;
+font-size:14px;
+}
+
+.btn{
+width:100%;
+padding:10px;
+border:none;
+background:#2a5298;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#1e3c72;
+}
+
+.switch-text{
+text-align:center;
+margin-top:15px;
+font-size:14px;
+}
+
+.switch-text a{
+color:#2a5298;
+text-decoration:none;
+font-weight:600;
+}
+
+.credential{
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+.flash-message {
+  color: white;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Success = green, error = red */
+.flash-message.success { background-color: #10b981; }
+.flash-message.error { background-color: #ef4444; }
+
+/* Fade out animation */
+@keyframes fadeout {
+  0% {opacity: 1;}
+  80% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.flash-message {
+  animation: fadeout 4s forwards;
+}
+</style>
+
+</head>
+<body>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div id="flash-container" style="position:fixed; top:20px; right:20px; z-index:1000;">
+      {% for category, message in messages %}
+        <div class="flash-message {{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %} 
+
+<div class="auth-wrapper">
+<div class="auth-card">
+
+<div class="credential"><h1>{{credentials}}</h1></div>
+
+<h2>Login to CareerConnect</h2>
+
+<form method="POST" action="/login-submit">
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<div class="password-box">
+<input type="password" name="password" required>
+<span class="eye">👁</span>
+</div>
+</div>
+
+<div class="role-group">
+<label><input type="radio" name="role" value="student" required> Student</label>
+<label><input type="radio" name="role" value="recruiter"> Recruiter</label>
+</div>
+
+<button type="submit" class="btn">Login</button>
+
+</form>
+
+<p class="switch-text">
+Don't have an account?
+<a href="/signup">Sign Up</a>
+</p>
+
+</div>
+</div>
+
+</body>
+</html>

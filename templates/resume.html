@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerConnect - Upload Resume</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+background:linear-gradient(135deg,#6a11cb,#2575fc);
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:white;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#2575fc;
+}
+
+.dashboard-btn{
+text-decoration:none;
+padding:10px 20px;
+background:#2575fc;
+color:white;
+border-radius:6px;
+transition:0.3s;
+}
+
+.dashboard-btn:hover{
+background:#1a5de0;
+}
+
+/* MAIN */
+
+.container{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* CARD */
+
+.upload-card{
+background:white;
+padding:40px;
+width:420px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.upload-card h2{
+margin-bottom:10px;
+color:#333;
+}
+
+.upload-card p{
+color:#777;
+margin-bottom:25px;
+}
+
+.upload-box{
+border:2px dashed #2575fc;
+padding:35px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.upload-box:hover{
+background:#f4f8ff;
+}
+
+.upload-box input{
+display:none;
+}
+
+.upload-btn{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+background:#2575fc;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.upload-btn:hover{
+background:#1a5de0;
+}
+
+/* IMAGE PREVIEW */
+
+#preview{
+margin-top:20px;
+max-width:100%;
+display:none;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+.wron{
+    color: red;
+    font-size: 18px;
+    font-weight: bolder;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">CareerConnect</div>
+<div class="wron">{{wrong}}</div>
+<a href="{{ url_for('recruiter') }}" class="dashboard-btn">Dashboard</a>
+
+</header>
+
+<div class="container">
+
+<div class="upload-card">
+
+<h2>Upload Resume Image</h2>
+<p>Select your resume image</p>
+
+<form action="/submit_resume" method="POST" enctype="multipart/form-data">
+
+<label class="upload-box">
+📷 Click to Upload Image
+<input type="file" name="resume" accept="image/*" required onchange="previewImage(event)">
+</label>
+
+<img id="preview">
+
+<button class="upload-btn" type="submit">
+Upload Resume
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function previewImage(event){
+
+const reader = new FileReader();
+
+reader.onload = function(){
+const output = document.getElementById('preview');
+output.src = reader.result;
+output.style.display = "block";
+}
+
+reader.readAsDataURL(event.target.files[0]);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HireHub | Find Your Dream Job</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0f2027;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 8%;
+  background:rgba(0,0,0,0.4);
+  position:fixed;
+  width:100%;
+  backdrop-filter:blur(8px);
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:#1e3c72;
+    color:white;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#00c6ff;
+}
+
+.auth-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:7px 15px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.login-btn{
+    background:white;
+    color:#1e3c72;
+}
+
+.signup-btn{
+    background:#00c6ff;
+    color:white;
+}
+
+.signup-btn:hover{
+    background:#0096c7;
+}
+.logo{
+  font-size:22px;
+  font-weight:600;
+}
+
+.nav-links a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(-45deg,#141e30,#243b55,#0f2027,#2c5364);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.search-box{
+  display:flex;
+  background:white;
+  border-radius:50px;
+  padding:8px;
+  width:90%;
+  max-width:600px;
+}
+
+.search-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  padding:10px;
+}
+
+.search-box button{
+  background:#2c5364;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+/* SECTION */
+.section{
+  padding:80px 8%;
+}
+
+.section h2{
+  margin-bottom:40px;
+  font-size:28px;
+}
+
+/* FEATURED AUTO SLIDE */
+.featured-slider{
+  overflow:hidden;
+  position:relative;
+}
+
+.slide-track{
+  display:flex;
+  gap:20px;
+  animation:scroll 20s linear infinite;
+}
+
+.featured-item{
+  min-width:220px;
+  background:white;
+  color:#333;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:500;
+}
+
+@keyframes scroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+
+/* LATEST JOBS */
+.latest-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.latest-card{
+  background:white;
+  color:#333;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.latest-card img{
+  width:80px;
+  height:50px;
+  object-fit:contain;
+  margin-bottom:15px;
+}
+
+.latest-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+.footer{
+  text-align:center;
+  padding:20px;
+  background:#111;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">CareerConnect</div>
+  
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/job">Jobs</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+        <a href="/login" class="btn login-btn">Login</a>
+        <a href="/signup" class="btn signup-btn">Sign Up</a>
+    </div>
+</nav>
+
+<section class="hero">
+  <h1>Find Your Dream Job Today</h1>
+
+  <div class="search-box">
+    <input type="text" placeholder="Job title">
+    <input type="text" placeholder="Location">
+    <button>Search</button>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="section">
+  <h2>Featured Jobs</h2>
+
+  <div class="featured-slider">
+    <div class="slide-track">
+      <div class="featured-item">Frontend Developer</div>
+      <div class="featured-item">Backend Engineer</div>
+      <div class="featured-item">UI/UX Designer</div>
+      <div class="featured-item">Data Analyst</div>
+      <div class="featured-item">Software Engineer</div>
+      <div class="featured-item">Cloud Engineer</div>
+
+      <!-- Duplicate for smooth loop -->
+      <div class="featured-item">Frontend Developer</div>
+      <div class="featured-item">Backend Engineer</div>
+      <div class="featured-item">UI/UX Designer</div>
+      <div class="featured-item">Data Analyst</div>
+      <div class="featured-item">Software Engineer</div>
+      <div class="featured-item">Cloud Engineer</div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST JOBS -->
+<section class="section">
+  <h2>Latest Jobs</h2>
+
+  <div class="latest-grid">
+
+    <div class="latest-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+      <h4>Google</h4>
+      <p>Hiring Frontend Developer • Bangalore • 12 LPA</p>
+    </div>
+
+    <div class="latest-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
+      <h4>Microsoft</h4>
+      <p>Hiring Backend Engineer • Delhi • 10 LPA</p>
+    </div>
+
+    <div class="latest-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+      <h4>Amazon</h4>
+      <p>Hiring Data Analyst • Mumbai • 8 LPA</p>
+    </div>
+
+    <div class="latest-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
+      <h4>Infosys</h4>
+      <p>Hiring Software Engineer • Bangalore • 6 LPA</p>
+    </div>
+
+    <div class="latest-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg">
+      <h4>Deloitte</h4>
+      <p>Hiring Business Analyst • Mumbai • 9 LPA</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="footer">
+  © 2026 HireHub. All Rights Reserved.
+</div>
+
+</body>
+</html>

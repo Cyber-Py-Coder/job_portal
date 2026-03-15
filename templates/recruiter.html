@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recruiter Dashboard</title>
+<style>
+    body{
+margin:0;
+font-family:Arial;
+background:#f5f7fb;
+}
+
+/* Navbar */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:65px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:#1e293b;
+color:white;
+padding:0 30px;
+box-sizing:border-box;
+z-index:1000;
+}
+
+.nav-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.nav-left h2{
+margin:0;
+font-size:20px;
+white-space:nowrap;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+}
+
+.post-job{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 18px;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+white-space:nowrap;
+}
+
+.menu-btn{
+font-size:22px;
+cursor:pointer;
+margin-right:10px;
+}
+
+/* Sidebar */
+.sidebar{
+position:fixed;
+top:0;
+left:-240px;
+width:240px;
+height:100vh;
+background:#0f172a;
+padding-top:80px;
+transition:0.3s;
+z-index:999;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:14px 25px;
+text-decoration:none;
+font-size:15px;
+}
+
+.sidebar a:hover{
+background:#1e293b;
+}
+
+.sidebar-bottom{
+position:absolute;
+bottom:20px;
+width:100%;
+}
+
+/* Main */
+
+.main{
+margin-top:60px;
+padding:25px;
+}
+
+/* Cards */
+
+.cards{
+display:flex;
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+flex:1;
+padding:20px;
+border-radius:10px;
+color:white;
+}
+
+.jobs{background:#3b82f6;}
+.applications{background:#8b5cf6;}
+.shortlist{background:#10b981;}
+.rejected{background:#ef4444;}
+
+/* Graph */
+
+.graph{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:30px;
+}
+
+.bars{
+display:flex;
+align-items:flex-end;
+gap:15px;
+height:150px;
+}
+
+.bar{
+width:40px;
+background:#2563eb;
+color:white;
+text-align:center;
+border-radius:5px;
+}
+
+/* Applications */
+
+.applications-list{
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+.app-card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+select{
+padding:5px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button.send-btn{
+background:#2563eb;
+border:none;
+color:white;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+margin-top:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="navbar">
+
+<div class="nav-left">
+<span class="menu-btn" onclick="toggleSidebar()">☰</span>
+<h2>CareerConnect</h2>
+</div>
+
+<div><h1> Welcome! {{name}} </h1></div>
+
+<div class="nav-right">
+<a href="/view_posted_jobs" style="text-decoration: none; color: white;"><button class="post-job">View Posted Jobs</button></a>
+</div>
+
+</div>
+
+<!-- Sidebar -->
+
+<div class="sidebar" id="sidebar">
+
+<a href="/recruiter_dashbaord">Dashboard</a>
+<!-- <a href="#">Posted Jobs</a>
+<a href="#">Applications</a>
+<a href="#">Candidates</a>-->
+<a href="/logout">Logout</a> 
+
+<div class="sidebar-bottom">
+<!-- <a href="/logout">logout</a> -->
+</div>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+<h1>Recruiter Dashboard</h1>
+
+<!-- Stats Cards -->
+
+<div class="cards">
+
+<div class="card jobs">
+<h3>Total Jobs Posted</h3>
+<p>{{Totaljobs}}</p>
+</div>
+
+<div class="card applications">
+<h3>Total Applications</h3>
+<p>{{candidates}}</p>
+</div>
+
+<div class="card shortlist">
+<h3>Shortlisted</h3>
+<p>{{accepted}}</p>
+</div>
+
+<div class="card rejected">
+<h3>Rejected</h3>
+<p>{{rejected}}</p>
+</div>
+
+</div>
+
+<!-- Graph -->
+
+<div class="graph">
+
+<h2>Application Statistics</h2>
+<div class="bars">
+
+<div class="bar" style="height:60%">Mon</div>
+<div class="bar" style="height:80%">Tue</div>
+<div class="bar" style="height:50%">Wed</div>
+<div class="bar" style="height:90%">Thu</div>
+<div class="bar" style="height:40%">Fri</div>
+
+</div>
+
+</div>
+
+<!-- Recent Applications -->
+
+<div class="applications-list">
+
+<h2>Recent Applications</h2>
+
+{% for app in applications %}
+
+<div class="app-card">
+
+<div>
+<h4>{{app.name}}</h4>
+<a href="{{ url_for('static', filename='uploads/' + app.profile) }}" target="_blank">
+        View Resume
+    </a>
+<p>Email: {{app.email}}</p>   
+<p>{{app.job_title}}</p>
+</div>
+
+<div>
+    <h4 style="text-align: center;">Status</h3>
+    <h3>{{ app.status }}</h3>
+</div>
+
+<div>
+<form action="/update_status" method="POST">
+<input type="hidden" name="application_id" value="{{app.id}}">
+<select name="status">
+<option value="Interview">Interview</option>
+<option value="Rejected">Rejected</option>
+</select>
+<br>
+<button type="submit" class="send-btn">Send</button>
+</form>
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<script>
+
+function toggleSidebar(){
+let sidebar = document.getElementById("sidebar");
+
+if(sidebar.style.left === "0px"){
+sidebar.style.left = "-240px";
+}
+else{
+sidebar.style.left = "0px";
+}
+}
+
+</script>
+
+</body>
+</html>

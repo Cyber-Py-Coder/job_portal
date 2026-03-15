@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign Up | CareerConnect</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0f2027;
+}
+
+.auth-wrapper{
+position:relative;
+width:420px;
+padding:2px;
+border-radius:15px;
+background:linear-gradient(-45deg,#1e3c72,#2a5298,#00c6ff,#0072ff);
+background-size:400% 400%;
+animation:gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.auth-card{
+background:white;
+padding:35px;
+border-radius:15px;
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#1e3c72;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:6px;
+font-size:14px;
+}
+
+.input-group input{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+outline:none;
+}
+
+.input-group input:focus{
+border-color:#2a5298;
+}
+
+.password-box{
+position:relative;
+}
+
+.password-box input{
+padding-right:35px;
+}
+
+.eye{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+}
+
+.role-group{
+display:flex;
+justify-content:space-between;
+margin:15px 0;
+font-size:14px;
+}
+
+.btn{
+width:100%;
+padding:10px;
+border:none;
+background:#2a5298;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#1e3c72;
+}
+
+.switch-text{
+text-align:center;
+margin-top:15px;
+font-size:14px;
+}
+
+.switch-text a{
+color:#2a5298;
+text-decoration:none;
+font-weight:600;
+}
+</style>
+
+</head>
+<body>
+
+<div class="auth-wrapper">
+<div class="auth-card">
+
+<h2>Create Account</h2>
+
+<form method="POST" action="/signup-submit">
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" name="name" required>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<div class="password-box">
+<input type="password" name="password" required>
+<span class="eye">👁</span>
+</div>
+</div>
+
+<div class="role-group">
+<label><input type="radio" name="role" value="student" required> Job Seeker</label>
+<label><input type="radio" name="role" value="recruiter"> Recruiter</label>
+</div>
+
+<button type="submit" class="btn">Create Account</button>
+
+</form>
+
+<p class="switch-text">
+Already have an account?
+<a href="/login">Login</a>
+</p>
+
+</div>
+</div>
+
+</body>
+</html>

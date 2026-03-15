@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Posted Jobs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:40px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
+
+.header h1{
+font-size:32px;
+font-weight:600;
+}
+
+.post-btn{
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+padding:12px 22px;
+border:none;
+border-radius:8px;
+color:white;
+font-size:14px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.post-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.jobs-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.job-card{
+background:#1e293b;
+border-radius:14px;
+padding:22px;
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.job-card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 30px rgba(0,0,0,0.5);
+}
+
+.job-title{
+font-size:20px;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.company{
+font-size:14px;
+color:#94a3b8;
+margin-bottom:12px;
+}
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:15px;
+}
+
+.tag{
+background:#334155;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+}
+
+.salary{
+font-weight:500;
+margin-bottom:10px;
+}
+
+.deadline{
+font-size:13px;
+color:#f87171;
+margin-bottom:15px;
+}
+
+.skills{
+font-size:13px;
+color:#cbd5f5;
+margin-bottom:18px;
+}
+
+.actions{
+display:flex;
+justify-content:space-between;
+}
+
+.btn{
+border:none;
+padding:8px 16px;
+border-radius:6px;
+font-size:13px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.edit{
+background:#3b82f6;
+color:white;
+}
+
+.delete{
+background:#ef4444;
+color:white;
+}
+
+.website{
+background:#10b981;
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>🚀 Your Posted Jobs</h1>
+<a href="/recruiter_dashbaord"><button class="post-btn">Dashboard</button></a>
+<a href="/post_job"><button class="post-btn">+ Post New Job</button></a>
+</div>
+
+
+<div class="jobs-grid">
+
+{% for job in jobs %}
+
+<div class="job-card">
+
+<div class="job-title">
+{{ job.job_title }}
+</div>
+
+<div class="company">
+🏢 {{ job.company_name }} • 📍 {{ job.location }}
+</div>
+
+<div class="tags">
+<span class="tag">{{ job.job_type }}</span>
+<span class="tag">{{ job.experience }}</span>
+</div>
+
+<div class="salary">
+💰 {{ job.salary_range }}
+</div>
+
+<div class="deadline">
+⏰ Apply Before: {{ job.deadline }}
+</div>
+
+<div class="skills">
+<strong>Skills:</strong> {{ job.skills }}
+</div>
+
+<div class="actions">
+<a href="{{ job.website }}" target="_blank">
+<button class="btn website">Visit</button>
+</a>
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

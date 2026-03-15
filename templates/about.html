@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | CareerConnect</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f8fafc;
+color:#1e293b;
+}
+
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:#1e3c72;
+    color:white;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#00c6ff;
+}
+
+.auth-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:7px 15px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.login-btn{
+    background:white;
+    color:#1e3c72;
+}
+
+.signup-btn{
+    background:#00c6ff;
+    color:white;
+}
+
+.signup-btn:hover{
+    background:#0096c7;
+}
+.logo{
+  font-size:22px;
+  font-weight:600;
+}
+
+.nav-links a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+}
+
+/* HERO */
+
+.hero{
+height:60vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(270deg,#2563eb,#38bdf8,#6366f1);
+background-size:600% 600%;
+animation:gradientMove 8s ease infinite;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:50px;
+margin-bottom:10px;
+}
+
+.hero p{
+max-width:700px;
+font-size:18px;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* SECTION */
+
+.section{
+padding:80px 10%;
+text-align:center;
+}
+
+.section h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+/* FEATURES */
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+margin-top:50px;
+}
+
+.feature-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-10px);
+}
+
+.feature-card h3{
+color:#2563eb;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+margin-top:50px;
+}
+
+.stat{
+background:#2563eb;
+color:white;
+padding:35px;
+border-radius:10px;
+}
+
+.stat h1{
+font-size:36px;
+margin:0;
+}
+
+/* COMPANY LOGOS */
+
+.companies{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:40px;
+margin-top:40px;
+}
+
+.companies img{
+width:120px;
+opacity:0.7;
+transition:0.3s;
+}
+
+.companies img:hover{
+opacity:1;
+transform:scale(1.1);
+}
+
+/* TEAM */
+
+.team-container{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.team-card{
+background:white;
+padding:25px;
+border-radius:12px;
+width:220px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.team-card:hover{
+transform:translateY(-8px);
+}
+
+.team-card img{
+width:90px;
+height:90px;
+border-radius:50%;
+margin-bottom:10px;
+}
+
+/* CTA */
+
+.cta{
+background:#1e293b;
+color:white;
+text-align:center;
+padding:70px 20px;
+}
+
+.cta h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.cta button{
+background:#38bdf8;
+border:none;
+padding:12px 25px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.cta button:hover{
+background:#0ea5e9;
+}
+
+/* FOOTER */
+
+.footer{
+background:#0f172a;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+    <div class="logo">CareerConnect</div>
+  
+
+    <ul class="nav-links">
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+        <a href="login.html" class="btn login-btn">Login</a>
+        <a href="signup.html" class="btn signup-btn">Sign Up</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+<h1>About CareerConnect</h1>
+<p>
+Connecting talent with opportunity. CareerConnect helps professionals
+find their dream jobs while enabling companies to hire the best talent.
+</p>
+</section>
+
+
+<!-- MISSION -->
+
+<section class="section">
+
+<h2>Our Mission</h2>
+
+<p>
+Our mission is to simplify the hiring process by providing a modern
+platform where job seekers and recruiters connect seamlessly.
+</p>
+
+<div class="features">
+
+<div class="feature-card">
+<h3>Smart Job Search</h3>
+<p>Filter jobs by salary, location and industry.</p>
+</div>
+
+<div class="feature-card">
+<h3>Top Companies</h3>
+<p>Work with globally recognized companies.</p>
+</div>
+
+<div class="feature-card">
+<h3>Fast Applications</h3>
+<p>Apply to jobs instantly with easy profile upload.</p>
+</div>
+
+<div class="feature-card">
+<h3>Career Growth</h3>
+<p>Discover opportunities that match your skills.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="section">
+
+<h2>Platform Statistics</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h1>10K+</h1>
+<p>Jobs Posted</p>
+</div>
+
+<div class="stat">
+<h1>5K+</h1>
+<p>Companies</p>
+</div>
+
+<div class="stat">
+<h1>50K+</h1>
+<p>Users</p>
+</div>
+
+<div class="stat">
+<h1>95%</h1>
+<p>Hiring Success</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TOP COMPANIES -->
+
+<section class="section">
+
+<h2>Top Hiring Companies</h2>
+
+<div class="companies">
+
+<img src="https://logo.clearbit.com/google.com">
+<img src="https://logo.clearbit.com/amazon.com">
+<img src="https://logo.clearbit.com/microsoft.com">
+<img src="https://logo.clearbit.com/netflix.com">
+<img src="https://logo.clearbit.com/adobe.com">
+
+</div>
+
+</section>
+
+
+<!-- TEAM -->
+
+<section class="section">
+
+<h2>Meet Our Team</h2>
+
+<div class="team-container">
+
+<div class="team-card">
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+<h4>Rahul Sharma</h4>
+<p>Founder</p>
+</div>
+
+<div class="team-card">
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+<h4>Ananya Kapoor</h4>
+<p>Product Manager</p>
+</div>
+
+<div class="team-card">
+<img src="https://randomuser.me/api/portraits/men/65.jpg">
+<h4>Arjun Mehta</h4>
+<p>Lead Developer</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Start Your Career Journey Today</h2>
+<p>Join thousands of professionals finding jobs on CareerConnect.</p>
+
+<button>Browse Jobs</button>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+<p>© 2026 CareerConnect. All Rights Reserved.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CareerConnect Dashboard</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#f4f6fb;
+}
+
+/* NAVBAR */
+
+.navbar{
+height:70px;
+width:100%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 30px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+position:fixed;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:700;
+color:#4f46e5;
+}
+
+/* MENU ICON */
+
+.menu-icon{
+font-size:28px;
+cursor:pointer;
+}
+
+/* SIDEBAR */
+
+#menu{
+display:none;
+}
+
+.sidebar{
+position:fixed;
+left:-260px;
+top:70px;
+width:260px;
+height:100%;
+background:white;
+box-shadow:2px 0 10px rgba(0,0,0,0.1);
+padding-top:20px;
+transition:0.3s;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+#menu:checked ~ .sidebar{
+left:0;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar li{
+padding:15px 25px;
+cursor:pointer;
+font-weight:500;
+}
+
+.sidebar li:hover{
+background:#f1f2ff;
+}
+
+.settings{
+padding:20px;
+border-top:1px solid #eee;
+}
+
+/* MAIN CONTENT */
+
+.main{
+margin-top:90px;
+padding:30px;
+}
+
+/* DASHBOARD CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+padding:25px;
+border-radius:10px;
+color:white;
+font-size:18px;
+font-weight:600;
+}
+
+.c1{background:#6366f1; font-size: 30px; font-weight: bold; justify-content: center; text-align: center;}
+.c2{background:#22c55e;}
+.c3{background:#ef4444;}
+.c4{background:#f59e0b;}
+
+/* GRAPH */
+
+.graph{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:30px;
+}
+
+.bar{
+display:flex;
+align-items:flex-end;  
+height: 150px;
+gap: 20px;
+} 
+
+.days{
+display:flex;
+gap:20px;
+margin-top:8px;
+}
+
+.days span{
+width:40px;
+text-align:center;
+font-size:13px;
+color:#555;
+}
+
+.bar div{
+width:40px;
+background:#6366f1;
+border-radius:5px;
+}
+
+.bar1{height:60px;}
+.bar2{height:120px;}
+.bar3{height:80px;}
+.bar4{height:140px;}
+.bar5{height:100px;}
+
+/* JOB LIST */
+
+.jobs{
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+.job{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #eee;
+}
+
+.applied-section{
+margin-top:40px;
+}
+
+.applied-section h2{
+margin-bottom:20px;
+}
+
+.job-card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:white;
+padding:15px 20px;
+margin-bottom:15px;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.job-card:hover{
+transform:translateY(-3px);
+}
+
+.job-info h3{
+margin:0;
+font-size:18px;
+}
+
+.job-info p{
+margin:3px 0;
+color:gray;
+font-size:14px;
+}
+
+.status{
+border:none;
+padding:8px 18px;
+border-radius:20px;
+color:white;
+font-size:13px;
+cursor:pointer;
+}
+
+/* Status Colors */
+
+.sent{
+background:#3498db;
+}
+
+.rejected{
+background:#e74c3c;
+}
+
+.interview{
+background:#2ecc71;
+}
+
+/* NOTIFICATION PANEL */
+
+.notifications{
+position:fixed;
+right:20px;
+top:90px;
+width:260px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+padding:15px;
+}
+
+.notifications h4{
+margin:0 0 10px;
+}
+
+.note{
+font-size:14px;
+margin-bottom:8px;
+color:#555;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<input type="checkbox" id="menu">
+
+<div class="navbar">
+
+<label for="menu" class="menu-icon">☰</label>
+
+<div class="logo">CareerConnect</div>
+
+<div><h2>Welcome! {{name}}</h2></div>
+<div>🔔</div>
+
+</div>
+
+
+<div class="sidebar">
+
+<ul>
+<li>Dashboard</li>
+<li>Search Jobs</li>
+<li>Applications</li>
+<a href="/upload_resume"><li>Resume</li></a>
+<li>Saved Jobs</li>
+<li>Profile</li>
+<li>settings</li>
+<a href="/logout"> <li>Logout</li></a>
+</ul>
+
+<div class="settings">
+⚙ Settings
+</div>
+
+</div>
+
+
+<div class="main">
+
+<div class="cards">
+
+<a href="/job_page"><div class="card c1">Find Jobs</div></a>
+
+<div class="card c2">Applications Accepted<br>{{Accept}}</div>
+
+<div class="card c3">Rejected<br>{{reject}}</div>
+
+<div class="card c4">Total applications sent<br>{{Totalapply}}</div>
+
+</div>
+
+
+<div class="graph">
+
+<h3>Daily Performance</h3>
+
+<div class="bar">
+<div class="bar1"></div>
+<div class="bar2"></div>
+<div class="bar3"></div>
+<div class="bar4"></div>
+<div class="bar5"></div>
+</div>
+<div class="days">  
+<span>Mon</span>
+<span>Tue</span> 
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+
+</div>
+
+<div class="applied-section">
+<h2>Applied Jobs</h2>
+
+{% for job in jobs %}
+
+<div class="job-card">
+
+<div class="job-info">
+<h3>{{job.job_title}}</h3>
+<p>Company: {{job.company_name}}</p>
+</div>
+
+<button class="status 
+{% if job.status == 'Sent' %}sent
+{% elif job.status == 'Rejected' %}Rejected
+{% elif job.status == 'Interview' %}interview
+{% endif %}
+">
+{{job.status}}
+</button>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>
