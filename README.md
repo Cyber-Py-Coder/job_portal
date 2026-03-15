@@ -60,6 +60,6 @@ git clone https://github.com/Cyber-Py-Coder/job-portal.git
 
 cd job-portal
 
-pip install -r requirements.txt
+pip install -r requirement.txt
 
 python app.py
